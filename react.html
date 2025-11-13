@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>React Examples — Learn JavaScript</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="ms-bg">
+  <nav class="navbar navbar-light bg-white border-bottom">
+    <div class="container"><a class="navbar-brand" href="index.html">← Back</a></div>
+  </nav>
+
+  <main class="container py-4">
+    <h2>React scenario examples</h2>
+    <p class="text-muted">Parent → Child props and calling parent method from child (recreated from PDF). :contentReference[oaicite:21]{index=21}</p>
+
+    <div class="card ms-card mb-4 p-3">
+      <h5>Pass data via props</h5>
+      <pre class="code-block"><code>// ParentComponent.jsx
+function ParentComponent(){
+  const message = "Hello from Parent!";
+  const user = {name: "Alice", age: 30};
+  return <ChildComponent text={message} userData={user} isAdmin={false} />
+}
+
+// ChildComponent.jsx
+function ChildComponent({ text, userData, isAdmin }){
+  return <div><h1>{text}</h1><p>{userData.name}</p></div>;
+}</code></pre>
+      <p class="small text-muted">Source: PDF. :contentReference[oaicite:22]{index=22}</p>
+    </div>
+
+    <div class="card ms-card mb-4 p-3">
+      <h5>Call parent method from child</h5>
+      <pre class="code-block"><code>// Parent
+function Parent(){ 
+  const handleChild = data => console.log("child said", data);
+  return <Child onAction={handleChild} />
+}
+
+// Child
+function Child({ onAction }){
+  return <button onClick={() => onAction('Hello from child')}>Trigger</button>
+}</code></pre>
+      <p class="small text-muted">Source: PDF examples. :contentReference[oaicite:23]{index=23}</p>
+    </div>
+  </main>
+
+  <footer class="py-3 text-center text-muted">React examples from PDF. :contentReference[oaicite:24]{index=24}</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="common.js"></script>
+</body>
+</html>

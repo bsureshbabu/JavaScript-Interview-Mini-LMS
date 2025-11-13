@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Output Questions — Learn JavaScript</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="ms-bg">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">← Back</a>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="theory.html">Theory</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container py-4">
+    <h2>Output-based Questions</h2>
+    <p class="text-muted">Examples and outputs reproduced from the PDF. Each card shows code (left) and expected output + explanation (right). :contentReference[oaicite:6]{index=6}</p>
+
+    <!-- Card 1: setTimeout / Promise example (from PDF) -->
+    <div class="card ms-card mb-4">
+      <div class="row g-0">
+        <div class="col-lg-7 p-3">
+          <h5 class="mb-2">Question: Event loop ordering</h5>
+          <pre class="code-block"><code>// From the PDF
+setTimeout(() => console.log(1), 0);
+
+console.log(2);
+
+new Promise(res => {
+  console.log(3)
+  res();
+}).then(() => console.log(4));
+
+console.log(5);
+</code></pre>
+        </div>
+
+        <div class="col-lg-5 p-3 border-start">
+          <h6 class="mb-1">Sample output (expected)</h6>
+          <div class="screenshot-like p-3">
+            <strong>Console output:</strong>
+            <pre class="mb-0">3
+2
+5
+4
+1</pre>
+            <hr/>
+            <div class="small text-muted">
+              Explanation (recreated from PDF): Promise executor runs immediately (prints 3), then synchronous logs 2 and 5; microtask `.then` runs before macrotask `setTimeout`.
+            </div>
+            <div class="mt-2"><small class="text-muted">Source: PDF examples. :contentReference[oaicite:7]{index=7}</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: Array concatenation / + operator -->
+    <div class="card ms-card mb-4">
+      <div class="row g-0">
+        <div class="col-lg-7 p-3">
+          <h5 class="mb-2">Question: What is output of `x + y` where x and y are arrays?</h5>
+          <pre class="code-block"><code>const x = [1,2,3];
+const y = [1,3,4];
+console.log(x + y);
+</code></pre>
+        </div>
+        <div class="col-lg-5 p-3 border-start">
+          <h6 class="mb-1">Sample output</h6>
+          <div class="screenshot-like p-3">
+            <pre class="mb-0">"1,2,31,3,4"</pre>
+            <hr/>
+            <div class="small text-muted">
+              Explanation: arrays are converted to strings via `toString()` then concatenated.
+            </div>
+            <div class="mt-2"><small class="text-muted">Source: PDF. :contentReference[oaicite:8]{index=8}</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3: [] + [], [1] + [] etc. -->
+    <div class="card ms-card mb-4">
+      <div class="row g-0">
+        <div class="col-lg-7 p-3">
+          <h5 class="mb-2">Several array + examples</h5>
+          <pre class="code-block"><code>console.log([] + []);
+console.log([1] + []);
+console.log([1] + "abc");</code></pre>
+        </div>
+        <div class="col-lg-5 p-3 border-start">
+          <h6 class="mb-1">Sample output</h6>
+          <div class="screenshot-like p-3">
+            <pre class="mb-0">
+""
+"1"
+"1abc"</pre>
+            <hr/>
+            <div class="small text-muted">Explanation: arrays become strings before concatenation. See PDF outputs. :contentReference[oaicite:9]{index=9}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4: forEach + break example -->
+    <div class="card ms-card mb-4">
+      <div class="row g-0">
+        <div class="col-lg-7 p-3">
+          <h5 class="mb-2">forEach with break — what's the output?</h5>
+          <pre class="code-block"><code>const nums = [1,2,3,4,5,6,7];
+nums.forEach(n => {
+  if (n % 2 === 0) {
+    break; // invalid inside forEach
+  }
+  console.log(n);
+});</code></pre>
+        </div>
+        <div class="col-lg-5 p-3 border-start">
+          <h6 class="mb-1">Sample output / note</h6>
+          <div class="screenshot-like p-3">
+            <pre class="mb-0">// This will throw a SyntaxError or not behave as intended.
+// 'break' is not allowed inside forEach callback; use a for-loop instead.
+</pre>
+            <hr/>
+            <div class="small text-muted">Explanation: `break` only works in loops (for/while), not inside callbacks. See PDF. :contentReference[oaicite:10]{index=10}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination or browse more link -->
+    <div class="d-flex justify-content-end">
+      <a href="problems.html" class="btn btn-outline-primary">Practice problems →</a>
+    </div>
+  </main>
+
+  <footer class="py-3 text-center text-muted border-top">Recreated sample outputs from the provided PDF. :contentReference[oaicite:11]{index=11}</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="common.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+// Microsoft theme variables
+$ms-primary: #0078D4;
+$ms-primary-700: #005A9E;
+$ms-accent: #2B88D8;
+$ms-bg: #f3f6f9;
+$ms-surface: #ffffff;
+$ms-muted: #6b7280;
+$ms-radius: 10px;
+$ms-font-stack: "Segoe UI", "Segoe UI Variable", Inter, system-ui, -apple-system, "Helvetica Neue", Arial;
+
+:root {
+  font-family: $ms-font-stack;
+  color-scheme: light;
+}
+
+body.ms-bg {
+  background: $ms-bg;
+  color: #0b1220;
+  font-family: $ms-font-stack;
+}
+
+/* logo */
+.ms-logo {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, $ms-primary, $ms-accent);
+  color: #fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  border-radius:8px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+}
+
+/* card surfaces */
+.ms-card {
+  background: $ms-surface;
+  border-radius: $ms-radius;
+  box-shadow: 0 6px 18px rgba(11,18,32,0.06);
+}
+
+/* code block */
+.code-block {
+  background: #0f1724;
+  color: #e6eef8;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow:auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+}
+
+/* screenshot-like */
+.screenshot-like {
+  background: linear-gradient(180deg,#fbfdff,#f5f9ff);
+  border: 1px solid rgba(2,6,23,0.04);
+  border-radius: 8px;
+}
+
+/* small helpers */
+h5 { font-weight:600; }
+pre { margin:0; }
+
+/* responsive tweaks */
+@media (max-width: 991px) {
+  .code-block { font-size: 0.9rem; }
+}
